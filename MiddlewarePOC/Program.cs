@@ -1,18 +1,14 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-
-using System.Threading;
-
+using MiddlewarePOC.Commands;
+using MiddlewarePOC.Commands.Common;
+using MiddlewarePOC.Commands.Middleware;
 
 try
 {
 	var serviceProvider = ConfigureServices();
 	var commandDispatcher = serviceProvider.GetRequiredService<ICommandDispatcher>();
 	await commandDispatcher.Dispatch(new DoSomethingImportantCommand("handle exceptions"), CancellationToken.None);
-
-	// Assuming you'll also use the query dispatcher at some point
-	//var queryDispatcher = serviceProvider.GetRequiredService<IQueryDispatcher>();
-	//var result = await queryDispatcher.Dispatch<MyQuery, MyQueryResult>(new MyQuery(), CancellationToken.None);
 }
 catch (Exception ex)
 {
@@ -22,13 +18,8 @@ catch (Exception ex)
 	Console.ResetColor();
 }
 
-// Resolve and use the dispatcher
+// put breakpoint here
 var y = 0;
-// Assuming you'll also use the query dispatcher at some point
-//var queryDispatcher = serviceProvider.GetRequiredService<IQueryDispatcher>();
-//var result = await queryDispatcher.Dispatch<MyQuery, MyQueryResult>(new MyQuery(), CancellationToken.None);
-
-// Add more logic as needed...
 
 IServiceProvider ConfigureServices()
 {

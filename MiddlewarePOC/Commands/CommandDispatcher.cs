@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using MiddlewarePOC.Commands.Common;
 
 class CommandDispatcher : ICommandDispatcher
 {
