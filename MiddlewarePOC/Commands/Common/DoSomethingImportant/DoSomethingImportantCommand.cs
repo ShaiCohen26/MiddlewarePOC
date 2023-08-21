@@ -1,0 +1,1 @@
+﻿record DoSomethingImportantCommand(string Action);
